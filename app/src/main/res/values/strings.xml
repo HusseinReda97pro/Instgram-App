@@ -8,4 +8,14 @@
     <string name="enter_your_password_here">Enter Your Password here</string>
     <string name="instagram">Instagram</string>
     <string name="enter_your_User_Name_here">Enter Your User Name here</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Logout</string>
+    <string name="login">Login</string>
+    <string name="signup_now">Signup Now</string>
+    <string name="or_you_dosen_t_have_account_yet">Or You Dosen\'t have account yet !</string>
+    <string name="enter_your_user_name_here">Enter Your User Name here</string>
+    <string name="update">Update</string>
+    <string name="age">Age</string>
 </resources>

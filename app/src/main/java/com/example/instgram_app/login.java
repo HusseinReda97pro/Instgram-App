@@ -2,10 +2,10 @@ package com.example.instgram_app;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -41,18 +41,25 @@ public class login extends AppCompatActivity {
                         new LogInCallback() {
                             @Override
                             public void done(ParseUser user, ParseException e) {
-                                if(e==null&&user != null){
-                                    Intent HomeIntent = new Intent( login.this,HomeActivity.class);
-                                    startActivity(HomeIntent);
-                                    LoginError.setText("");
+                               try{
+                                   if(e==null&&user != null){
+                                       Intent HomeIntent = new Intent( login.this, Home.class);
+                                       startActivity(HomeIntent);
+                                       LoginError.setText("");
 
-                                }else if (user == null){
-                                    LoginError.setText("No such This user name Signup First");
-                                }else{
-                                    Toast.makeText( login.this,e.getLocalizedMessage(),Toast.LENGTH_SHORT ).show();
-                                    LoginError.setText("user name or password is wrong");
+                                   }else if (user == null){
+                                       LoginError.setText("No such This user name Signup First");
+                                   }else{
+                                       Toast.makeText( login.this,e.getLocalizedMessage(),Toast.LENGTH_SHORT ).show();
+                                       LoginError.setText("user name or password is wrong");
 
-                                }
+                                   }
+                               }catch(Exception e1){
+                                   Toast.makeText( login.this,"something wrong",Toast.LENGTH_SHORT ).show();
+
+
+
+                               }
                                 WaitingDialog.dismiss();
 
                             }
@@ -64,6 +71,15 @@ public class login extends AppCompatActivity {
     public void goToSignupActivity(View v){
         Intent signupIntent = new Intent( login.this,signup.class);
         startActivity(signupIntent);
+
+    }
+    public void HideKeybord(View view) {
+        try {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService( INPUT_METHOD_SERVICE );
+            inputMethodManager.hideSoftInputFromWindow( getCurrentFocus().getWindowToken(), 0 );
+        } catch (Exception e) {
+        }
+
 
     }
 
