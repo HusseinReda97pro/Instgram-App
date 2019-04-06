@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.instgram_app.R;
 import com.parse.FindCallback;
@@ -26,6 +27,7 @@ public class usersTab extends Fragment {
     ListView usersList;
     ArrayList arrayList;
     ArrayAdapter arrayAdapter;
+    TextView Loading;
 
     public usersTab() {
         // Required empty public constructor
@@ -40,6 +42,7 @@ public class usersTab extends Fragment {
         usersList = view.findViewById( R.id.usersList );
         arrayList = new ArrayList();
         arrayAdapter = new ArrayAdapter( getContext(),android.R.layout.simple_list_item_1,arrayList);
+        Loading = view.findViewById( R.id.usersLoading );
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereNotEqualTo( "username",ParseUser.getCurrentUser().getUsername() );
         query.findInBackground( new FindCallback<ParseUser>() {
@@ -51,6 +54,8 @@ public class usersTab extends Fragment {
                             arrayList.add( user.getUsername() );
                         }
                         usersList.setAdapter( arrayAdapter );
+                        Loading.animate().alpha(0).setDuration( 2000 );
+                        usersList.setVisibility( View.VISIBLE);
                     }
                 }
             }
