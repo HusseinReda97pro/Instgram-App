@@ -1,5 +1,6 @@
 package com.example.instgram_app;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,8 +44,7 @@ public class login extends AppCompatActivity {
                             public void done(ParseUser user, ParseException e) {
                                try{
                                    if(e==null&&user != null){
-                                       Intent HomeIntent = new Intent( login.this, Home.class);
-                                       startActivity(HomeIntent);
+                                       goToHomeActivity();
                                        LoginError.setText("");
 
                                    }else if (user == null){
@@ -71,6 +71,13 @@ public class login extends AppCompatActivity {
     public void goToSignupActivity(View v){
         Intent signupIntent = new Intent( login.this,signup.class);
         startActivity(signupIntent);
+
+    }
+    public void goToHomeActivity(){
+        Intent HomeIntent = new Intent( login.this, Home.class);
+        startActivity(HomeIntent);
+        finish();
+
 
     }
     public void HideKeybord(View view) {
