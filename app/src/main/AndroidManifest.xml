@@ -3,10 +3,8 @@
     package="com.example.instgram_app">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <!--for access external storage on user device and get photo to application -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- for access external storage on user device and get photo to application -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".App"
@@ -16,9 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Home"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
+        <activity android:name=".userPosts"></activity>
+        <activity
+            android:name=".Home"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".signup" />
         <activity android:name=".login">
             <intent-filter>
