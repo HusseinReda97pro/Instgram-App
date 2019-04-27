@@ -70,7 +70,7 @@ public class usersTab extends Fragment {
                         if(user != null && e == null){
                            final PrettyDialog prettyDialog = new PrettyDialog(getContext());
                             prettyDialog.setTitle(user.getUsername() +"'s Info")
-                                        .setMessage("Email : " +"pro.hussein.reda@gmail.com"+"\n"+
+                                        .setMessage("Email : " +user.get("email")+"\n"+
                                                     "Age : "+user.get("age")+"\n"
                                         )
                                         .setIcon(R.drawable.person)
